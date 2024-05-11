@@ -7,13 +7,12 @@ check_root
 echo "Please enter DB password:"
 read -s mysql_root_password
 
-dnf install mysql-serddver -y &>>$LOGFILE
+dnf install mysql-server -y &>>$LOGFILE
 
 systemctl enable mysqld &>>$LOGFILE
 
 systemctl start mysqld &>>$LOGFILE
 
-# mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
 
 # Below code will be useful for idempotent nature
  mysql -h db.upendradaws78s.online -uroot -p${mysql_root_password} -e 'show databases;' &>>LOGFILE
